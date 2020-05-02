@@ -9,6 +9,7 @@ env:
   jobs:
     - ARCH=amd64
     - ARCH=armv7hf
+    - ARCH=aarch64
   
 before_script: 
   - DOCKER_VERSION=$(curl -sSL "https://registry.hub.docker.com/v2/repositories/$REPO/tags?page_size=1024" | jq -r '."results"[]["name"]' | grep '^[0-9].*[0-9]$' | sort | uniq | tail -n 1)
@@ -18,7 +19,7 @@ before_script:
   - VERSION="${NORDVPN_VERSION}" ; BRANCH="latest"
   - if [ "${TRAVIS_BRANCH}" != "master" ]; then VERSION+="${TRAVIS_BRANCH}" ; BRANCH="${TRAVIS_BRANCH}" ; fi   
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - if [ "${ARCH}" == "armv7hf" ]; then sed -i 's/^#CROSSRUN/RUN/g' Dockerfile ; fi
+  - if [ "${ARCH}" == "armv7hf" || "${ARCH}" == "aarch64" ]; then sed -i 's/^#CROSSRUN/RUN/g' Dockerfile ; fi
 
 stage: "Build"
 script:
@@ -38,10 +39,11 @@ jobs:
         - cat <<< $(jq '.+{"experimental":"enabled"}' ~/.docker/config.json) > ~/.docker/config.json
         - | 
           push() {
-            docker pull $REPO:amd64-${1} & docker pull $REPO:armv7hf-${1}
-            docker manifest create $REPO:${1} $REPO:amd64-${1} $REPO:armv7hf-${1}
+            docker pull $REPO:amd64-${1} & docker pull $REPO:armv7hf-${1} & docker pull $REPO:aarch64-${1} 
+            docker manifest create $REPO:${1} $REPO:amd64-${1} $REPO:armv7hf-${1} $REPO:aarch64-${1}
             docker manifest annotate $REPO:${1} $REPO:amd64-${1} --os linux --arch amd64
-            docker manifest annotate $REPO:${1} $REPO:armv7hf-${1} --os linux --arch arm --variant v7
+            docker manifest annotate $REPO:${1} $REPO:armv7hf-${1} --os linux --arch arm   --variant v7
+            docker manifest annotate $REPO:${1} $REPO:aarch64-${1} --os linux --arch arm64 --variant v8
             docker manifest push --purge $REPO:${1}
           }
         - if [ "${BRANCH}" != "dev" ]; then push ${VERSION} ; fi
