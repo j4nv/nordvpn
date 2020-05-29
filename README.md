@@ -1,13 +1,13 @@
 <p align="center">
-    <a href="https://nordvpn.com/"><img src="https://github.com/bubuntux/nordvpn/raw/master/NordVpn_logo.png"/></a>
+    <a href="https://nordvpn.com/"><img src="https://github.com/j4nv/nordvpn/raw/master/NordVpn_logo.png"/></a>
     </br>
-    <a href="https://github.com/bubuntux/nordvpn/blob/master/LICENSE"><img src="https://badgen.net/github/license/bubuntux/nordvpn?color=cyan"/></a>
-    <a href="https://cloud.docker.com/u/bubuntux/repository/docker/bubuntux/nordvpn"><img src="https://badgen.net/docker/size/bubuntux/nordvpn?icon=docker&label=size"/></a>
-    <a href="https://cloud.docker.com/u/bubuntux/repository/docker/bubuntux/nordvpn"><img src="https://badgen.net/docker/pulls/bubuntux/nordvpn?icon=docker&label=pulls"/></a>
-    <a href="https://cloud.docker.com/u/bubuntux/repository/docker/bubuntux/nordvpn"><img src="https://badgen.net/docker/stars/bubuntux/nordvpn?icon=docker&label=stars"/></a>
-    <a href="https://github.com/bubuntux/nordvpn"><img src="https://badgen.net/github/forks/bubuntux/nordvpn?icon=github&label=forks&color=black"/></a>
-    <a href="https://github.com/bubuntux/nordvpn"><img src="https://badgen.net/github/stars/bubuntux/nordvpn?icon=github&label=stars&color=black"/></a>
-    <a href="https://travis-ci.com/bubuntux/nordvpn"><img src="https://travis-ci.com/bubuntux/nordvpn.svg?branch=master"/></a>
+    <a href="https://github.com/j4nv/nordvpn/blob/master/LICENSE"><img src="https://badgen.net/github/license/j4nv/nordvpn?color=cyan"/></a>
+    <a href="https://cloud.docker.com/u/j4nv/repository/docker/j4nv/nordvpn"><img src="https://badgen.net/docker/size/j4nv/nordvpn?icon=docker&label=size"/></a>
+    <a href="https://cloud.docker.com/u/j4nv/repository/docker/j4nv/nordvpn"><img src="https://badgen.net/docker/pulls/j4nv/nordvpn?icon=docker&label=pulls"/></a>
+    <a href="https://cloud.docker.com/u/j4nv/repository/docker/j4nv/nordvpn"><img src="https://badgen.net/docker/stars/j4nv/nordvpn?icon=docker&label=stars"/></a>
+    <a href="https://github.com/j4nv/nordvpn"><img src="https://badgen.net/github/forks/j4nv/nordvpn?icon=github&label=forks&color=black"/></a>
+    <a href="https://github.com/j4nv/nordvpn"><img src="https://badgen.net/github/stars/j4nv/nordvpn?icon=github&label=stars&color=black"/></a>
+    <a href="https://travis-ci.com/j4nv/nordvpn"><img src="https://travis-ci.com/j4nv/nordvpn.svg?branch=master"/></a>
 </p>
 
 NordVpn official client in a docker. It makes routing containers traffic through NordVpn easy.

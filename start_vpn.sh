@@ -106,6 +106,7 @@ setup_nordvpn() {
 	[[ -n ${PROTOCOL} ]]  && nordvpn set protocol ${PROTOCOL} 
 	[[ -n ${OBFUSCATE} ]] && nordvpn set obfuscate ${OBFUSCATE}
 	[[ -n ${CYBER_SEC} ]] && nordvpn set cybersec ${CYBER_SEC}
+        [[ -n ${KILL_SWITCH} ]] && nordvpn set killswitch ${KILL_SWITCH}
 	[[ -n ${DNS} ]] && nordvpn set dns ${DNS//[;,]/ }
 	[[ -n ${DOCKER_NET} ]]  && nordvpn whitelist add subnet ${DOCKER_NET}
 	[[ -n ${NETWORK} ]]  && for net in ${NETWORK//[;,]/ };  do nordvpn whitelist add subnet ${net};  done
@@ -113,7 +114,7 @@ setup_nordvpn() {
 	[[ -n ${DEBUG} ]] && nordvpn -version && nordvpn settings
 }
 
-kill_switch
+# kill_switch
 
 pkill nordvpnd 
 rm -f /run/nordvpnd.sock
@@ -130,5 +131,6 @@ create_tun_device
 
 nordvpn connect ${CONNECT} || exit 1
 nordvpn status
+nordvpn settings
 
 tail -f --pid=$(pidof nordvpnd) /var/log/nordvpn/daemon.log
